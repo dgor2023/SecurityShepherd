@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
-			<version>1.4</version>
+			<version>1.4.7</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
@@ -152,32 +152,32 @@
                                     <target>
                                         <echo>ANT TASK - Copying database files and modifying for use with mysql</echo>
                                         <copy todir="${basedir}/docker/mysql" overwrite="true" flatten="true">
-                                            <fileset dir="${basedir}/src/main/resources/database" includes="*.sql" >
-                                                <include name="*.sql" />
+                                            <fileset dir="${basedir}/src/main/resources/database" includes="*.sql">
+                                                <include name="*.sql"/>
                                             </fileset>
                                         </copy>
                                         <copy todir="${basedir}/docker/mongo" overwrite="true" flatten="true">
-                                            <fileset dir="${basedir}/src/database" includes="*.js" >
-                                                <include name="*.js" />
+                                            <fileset dir="${basedir}/src/database" includes="*.js">
+                                                <include name="*.js"/>
                                             </fileset>
                                         </copy>
                                         <exec executable="sed">
-                                            <arg value="-i" />
-                                            <arg value="s/-- DELIMITER \$\$/DELIMITER \$\$/g" />
-                                            <arg value="${basedir}/docker/mysql/coreSchema.sql" />
-                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql" />
+                                            <arg value="-i"/>
+                                            <arg value="s/-- DELIMITER \$\$/DELIMITER \$\$/g"/>
+                                            <arg value="${basedir}/docker/mysql/coreSchema.sql"/>
+                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql"/>
                                         </exec>
                                         <exec executable="sed">
-                                            <arg value="-i" />
-                                            <arg value="s/-- \$\$/\$\$/g" />
-                                            <arg value="${basedir}/docker/mysql/coreSchema.sql" />
-                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql" />
+                                            <arg value="-i"/>
+                                            <arg value="s/-- \$\$/\$\$/g"/>
+                                            <arg value="${basedir}/docker/mysql/coreSchema.sql"/>
+                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql"/>
                                         </exec>
                                         <exec executable="sed">
-                                            <arg value="-i" />
-                                            <arg value="s/-- DELIMITER \;/DELIMITER \;/g" />
-                                            <arg value="${basedir}/docker/mysql/coreSchema.sql" />
-                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql" />
+                                            <arg value="-i"/>
+                                            <arg value="s/-- DELIMITER \;/DELIMITER \;/g"/>
+                                            <arg value="${basedir}/docker/mysql/coreSchema.sql"/>
+                                            <arg value="${basedir}/docker/mysql/moduleSchemas.sql"/>
                                         </exec>
                                     </target>
                                 </configuration>
